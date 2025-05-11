@@ -51,6 +51,61 @@ const Menu = () => {
     lg: 3
   })
 
+  // Enhanced SEO Structured Data
+  const menuStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Hotel Jagdamb",
+    "image": "/images/mutton-thali.jpeg",
+    "description": "Authentic Maharashtrian restaurant in Pune, famous for our signature Mutton Thali, Bokad Mutton Thali, and traditional dishes.",
+    "servesCuisine": ["Maharashtrian", "Indian"],
+    "priceRange": "₹₹",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Pune",
+      "addressRegion": "Maharashtra",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "18.459063",
+      "longitude": "73.823619"
+    },
+    "openingHours": "Mo-Su 11:00-23:00",
+    "telephone": "+91-XXXXXXXXXX",
+    "menu": {
+      "@type": "Menu",
+      "name": "Hotel Jagdamb Menu",
+      "description": "Authentic Maharashtrian cuisine featuring special thalis and traditional dishes",
+      "offers": menuItems.map(item => ({
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "MenuItem",
+          "name": item.name,
+          "alternateName": item.marathiName,
+          "description": item.description,
+          "offers": {
+            "@type": "Offer",
+            "price": item.price.replace('₹', ''),
+            "priceCurrency": "INR",
+            "availability": "https://schema.org/InStock"
+          }
+        }
+      }))
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.5",
+      "reviewCount": "500",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "sameAs": [
+      "https://www.facebook.com/hoteljagdamb",
+      "https://www.instagram.com/hoteljagdamb"
+    ]
+  }
+
   return (
     <Box 
       id="menu-section"
@@ -222,6 +277,10 @@ const Menu = () => {
           </SimpleGrid>
         </VStack>
       </Container>
+
+      <script type="application/ld+json">
+        {JSON.stringify(menuStructuredData)}
+      </script>
     </Box>
   )
 }

@@ -1,18 +1,29 @@
-import { Box, Container, SimpleGrid, Text, VStack, Heading, Button, HStack, Icon } from '@chakra-ui/react'
-import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock, FaWhatsapp } from 'react-icons/fa'
+import { Box, Container, Heading, Text, VStack, HStack, Icon, Button, useColorModeValue, Grid, GridItem } from '@chakra-ui/react'
+import { FaMapMarkerAlt, FaPhone, FaBuilding, FaWhatsapp } from 'react-icons/fa'
 
 const Footer = () => {
   const handleGetDirections = () => {
-    const hotelLocation = 'Hotel Jagdamb, Kolhapur'
-    const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(hotelLocation)}`
-    window.open(mapsUrl, '_blank')
+    const url = 'https://www.google.com/maps/dir/?api=1&destination=18.459063,73.823619'
+    window.open(url, '_blank')
   }
 
+  const handleWhatsApp = () => {
+    const phoneNumber = '919356646005'
+    const url = `https://wa.me/${phoneNumber}`
+    window.open(url, '_blank')
+  }
+
+  const bgGradient = useColorModeValue(
+    'linear(to-b, gray.900, gray.800)',
+    'linear(to-b, gray.900, gray.800)'
+  )
+
   return (
-    <Box 
-      bg="gray.900" 
-      color="gray.300" 
+    <Box
+      as="footer"
       width="100%"
+      py={20}
+      bgGradient={bgGradient}
       position="relative"
       _before={{
         content: '""',
@@ -21,101 +32,93 @@ const Footer = () => {
         left: 0,
         right: 0,
         bottom: 0,
-        background: 'linear-gradient(135deg, rgba(0,0,0,0.97) 0%, rgba(26,32,44,0.97) 100%)',
+        backgroundImage: 'url(/images/kolhapuri-pattern.png)',
+        backgroundSize: '200px',
+        opacity: 0.05,
         zIndex: 0,
       }}
     >
-      <Container maxW="100%" position="relative" zIndex={1}>
-        <SimpleGrid 
-          columns={{ base: 1, md: 2 }} 
-          spacing={10} 
-          maxW="1400px" 
-          mx="auto" 
-          px={{ base: 4, md: 6, lg: 8 }}
-          py={16}
-        >
-          <VStack align="start" spacing={6}>
-            <Heading 
-              as="h3" 
-              size="lg" 
-              color="brand.primary"
-              fontFamily="heading"
-              textShadow="0 0 10px rgba(255,165,0,0.2)"
-            >
-              Contact Us
-            </Heading>
-            <VStack align="start" spacing={3}>
-              <Text fontSize="lg">
-                📍 123 Main Street, Kolhapur
-              </Text>
-              <Text fontSize="lg">
-                📞 +91 1234567890
-              </Text>
-              <Text fontSize="lg">
-                ✉️ info@hoteljagdamb.com
-              </Text>
+      <Container maxW="container.xl" px={4}>
+        <Grid templateColumns={{ base: '1fr', md: '1fr 1fr' }} gap={8}>
+          <GridItem>
+            <VStack align="start" spacing={6}>
+              <Heading
+                as="h2"
+                size="xl"
+                bgGradient="linear(to-r, orange.400, yellow.400)"
+                bgClip="text"
+              >
+                Contact Us
+              </Heading>
+              <VStack align="start" spacing={4}>
+                <HStack>
+                  <Icon as={FaBuilding} color="orange.400" />
+                  <Text color="gray.300">1st floor, Hotel Jagdamb, Navle Bridge, Pune, 411041</Text>
+                </HStack>
+                <HStack 
+                  cursor="pointer" 
+                  onClick={handleWhatsApp}
+                  _hover={{ color: 'orange.400' }}
+                  transition="all 0.3s ease"
+                >
+                  <Icon as={FaWhatsapp} color="orange.400" />
+                  <Text color="gray.300">+91 9356646005</Text>
+                </HStack>
+              </VStack>
             </VStack>
-          </VStack>
-          <VStack align="start" spacing={6}>
-            <Heading 
-              as="h3" 
-              size="lg" 
-              color="brand.primary"
-              fontFamily="heading"
-              textShadow="0 0 10px rgba(255,165,0,0.2)"
-            >
-              Location
-            </Heading>
-            <Box 
-              width="100%" 
-              height="300px" 
-              borderRadius="xl" 
-              overflow="hidden"
-              boxShadow="0 4px 20px rgba(0,0,0,0.3)"
-            >
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15377.123456789012!2d74.2297!3d16.7050!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTbCsDQyJzE4LjAiTiA3NMKwMTMnNDYuOSJF!5e0!3m2!1sen!2sin!4v1234567890"
+          </GridItem>
+
+          <GridItem>
+            <VStack spacing={4} align="stretch">
+              <Box
                 width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </Box>
-            <Button
-              size="md"
-              variant="outline"
-              colorScheme="whiteAlpha"
-              onClick={handleGetDirections}
-              _hover={{
-                transform: 'translateY(-2px)',
-                boxShadow: '0 2px 8px rgba(255, 255, 255, 0.2)',
-                bg: 'whiteAlpha.200',
-              }}
-              transition="all 0.3s ease"
-              alignSelf="flex-end"
-            >
-              <HStack spacing={2}>
-                <Icon as={FaMapMarkerAlt} color="white" />
-                <Text>Get Directions</Text>
-              </HStack>
-            </Button>
-          </VStack>
-        </SimpleGrid>
-        <Box 
-          borderTop="1px solid" 
-          borderColor="gray.700" 
-          py={8} 
+                height="300px"
+                position="relative"
+                borderRadius="xl"
+                overflow="hidden"
+                boxShadow="0 4px 20px rgba(0,0,0,0.3)"
+              >
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2405.9872843646704!2d73.82302426956635!3d18.45902699891391!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTjCsDI3JzMyLjUiTiA3M8KwNDknMjUuMiJF!5e0!3m2!1sen!2sin!4v1647881234567!5m2!1sen!2sin"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </Box>
+              <Button
+                size="md"
+                colorScheme="whiteAlpha"
+                variant="outline"
+                onClick={handleGetDirections}
+                alignSelf="flex-end"
+                _hover={{
+                  bg: 'whiteAlpha.200',
+                  transform: 'translateY(-2px)',
+                  boxShadow: '0 4px 20px rgba(255, 255, 255, 0.1)',
+                }}
+              >
+                <HStack spacing={2}>
+                  <Icon as={FaMapMarkerAlt} />
+                  <Text>Get Directions</Text>
+                </HStack>
+              </Button>
+            </VStack>
+          </GridItem>
+        </Grid>
+
+        <Text
           textAlign="center"
-          maxW="1400px"
-          mx="auto"
-          px={{ base: 4, md: 6, lg: 8 }}
+          color="gray.500"
+          fontSize="sm"
+          mt={12}
+          position="relative"
+          zIndex={1}
         >
-          <Text>
-            © {new Date().getFullYear()} Hotel Jagdamb. All rights reserved.
-          </Text>
-        </Box>
+          © {new Date().getFullYear()} Hotel Jagdamb. All rights reserved.
+        </Text>
       </Container>
     </Box>
   )
