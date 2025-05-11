@@ -11,6 +11,12 @@ const shimmer = keyframes`
   100% { background-position: 1000px 0; }
 `
 
+const gradientShift = keyframes`
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+`
+
 const Hero = () => {
   const scrollToMenu = () => {
     const menuSection = document.getElementById('menu-section')
@@ -31,7 +37,7 @@ const Hero = () => {
         left: 0,
         right: 0,
         bottom: 0,
-        background: 'linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.5) 100%)',
+        background: 'linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(26,32,44,0.95) 100%)',
         zIndex: 1,
       }}
       _after={{
@@ -41,12 +47,33 @@ const Hero = () => {
         left: 0,
         right: 0,
         bottom: 0,
-        backgroundImage: 'url("/images/kolhapuri-pattern.png")',
-        opacity: 0.15,
+        background: 'linear-gradient(45deg, rgba(255,165,0,0.1) 0%, rgba(255,215,0,0.1) 100%)',
+        backgroundSize: '200% 200%',
+        animation: `${gradientShift} 15s ease infinite`,
         zIndex: 1,
-        animation: `${shimmer} 20s linear infinite`,
       }}
     >
+      <Box
+        position="absolute"
+        top={0}
+        left={0}
+        right={0}
+        bottom={0}
+        backgroundImage="url('/images/kolhapuri-pattern.png')"
+        opacity={0.05}
+        zIndex={1}
+        animation={`${shimmer} 20s linear infinite`}
+      />
+      <Box
+        position="absolute"
+        top="50%"
+        left="50%"
+        transform="translate(-50%, -50%)"
+        width="100%"
+        height="100%"
+        background="radial-gradient(circle at center, rgba(255,165,0,0.1) 0%, transparent 70%)"
+        zIndex={1}
+      />
       <Container maxW="100%" position="relative" zIndex={2}>
         <VStack spacing={8} maxW="1200px" mx="auto">
           <Heading

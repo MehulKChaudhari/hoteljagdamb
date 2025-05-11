@@ -1,4 +1,4 @@
-import { Box, Container, Heading, SimpleGrid, Text, VStack, Badge, keyframes } from '@chakra-ui/react'
+import { Box, Container, Heading, SimpleGrid, Text, VStack, Badge, keyframes, useBreakpointValue } from '@chakra-ui/react'
 
 const fadeIn = keyframes`
   from { opacity: 0; transform: translateY(20px); }
@@ -14,6 +14,12 @@ const pulse = keyframes`
   0% { transform: scale(1); }
   50% { transform: scale(1.05); }
   100% { transform: scale(1); }
+`
+
+const float = keyframes`
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
 `
 
 const Menu = () => {
@@ -38,6 +44,12 @@ const Menu = () => {
       marathiName: 'गवरन चिकन थाळी'
     }
   ]
+
+  const columns = useBreakpointValue({
+    base: 1,
+    md: 2,
+    lg: 3
+  })
 
   return (
     <Box 
@@ -77,7 +89,7 @@ const Menu = () => {
             color="brand.primary"
             position="relative"
             fontFamily="heading"
-            animation={`${fadeIn} 1s ease-out`}
+            animation={`${fadeIn} 1s ease-out, ${float} 6s ease-in-out infinite`}
             textShadow="2px 2px 4px rgba(0,0,0,0.5), 0 0 20px rgba(255,165,0,0.3)"
             _after={{
               content: '""',
@@ -95,7 +107,7 @@ const Menu = () => {
             Our Menu | आमचे मेनू
           </Heading>
           <SimpleGrid 
-            columns={{ base: 1, md: 2, lg: 3 }} 
+            columns={columns} 
             spacing={8} 
             width="100%"
             px={{ base: 4, md: 6, lg: 8 }}
@@ -159,6 +171,11 @@ const Menu = () => {
                       color="brand.secondary"
                       fontFamily="heading"
                       textShadow="0 0 10px rgba(255,165,0,0.2)"
+                      transition="all 0.3s ease"
+                      _hover={{
+                        color: 'brand.primary',
+                        transform: 'translateX(5px)',
+                      }}
                     >
                       {item.name}
                     </Text>
@@ -168,6 +185,11 @@ const Menu = () => {
                       fontFamily="body"
                       letterSpacing="wider"
                       fontWeight="medium"
+                      transition="all 0.3s ease"
+                      _hover={{
+                        color: 'gray.300',
+                        transform: 'translateX(5px)',
+                      }}
                     >
                       {item.marathiName}
                     </Text>
@@ -186,6 +208,11 @@ const Menu = () => {
                     fontSize="xl"
                     fontFamily="heading"
                     textShadow="0 0 10px rgba(255,165,0,0.2)"
+                    transition="all 0.3s ease"
+                    _hover={{
+                      transform: 'scale(1.05)',
+                      textShadow: '0 0 15px rgba(255,165,0,0.4)',
+                    }}
                   >
                     {item.price}
                   </Text>
