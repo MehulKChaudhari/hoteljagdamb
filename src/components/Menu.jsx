@@ -1,4 +1,5 @@
-import { Box, Container, Heading, SimpleGrid, Text, VStack, Badge, keyframes, useBreakpointValue } from '@chakra-ui/react'
+import { Box, Container, Heading, SimpleGrid, Text, VStack, Badge, useBreakpointValue } from '@chakra-ui/react'
+import { keyframes } from '@emotion/react'
 
 const fadeIn = keyframes`
   from { opacity: 0; transform: translateY(20px); }

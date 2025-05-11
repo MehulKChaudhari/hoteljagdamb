@@ -17,8 +17,6 @@ export default defineConfig({
     }
   },
   server: {
-    headers: {
-      'Content-Type': 'application/javascript'
-    }
+    // Removed incorrect Content-Type header
   }
 })

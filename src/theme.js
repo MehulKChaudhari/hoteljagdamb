@@ -1,6 +1,10 @@
 import { extendTheme } from '@chakra-ui/react'
 
 const theme = extendTheme({
+  config: {
+    initialColorMode: 'dark',
+    useSystemColorMode: false,
+  },
   colors: {
     brand: {
       primary: '#FFA500',
@@ -18,7 +22,7 @@ const theme = extendTheme({
     body: '"Poppins", sans-serif',
   },
   styles: {
-    global: {
+    global: (props) => ({
       '*': {
         margin: 0,
         padding: 0,
@@ -44,7 +48,7 @@ const theme = extendTheme({
         flexDirection: 'column',
         alignItems: 'stretch',
       },
-    },
+    }),
   },
   components: {
     Container: {
