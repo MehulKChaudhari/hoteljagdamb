@@ -7,6 +7,7 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
+    sourcemap: true,
     rollupOptions: {
       output: {
         format: 'es',
@@ -17,6 +18,10 @@ export default defineConfig({
     }
   },
   server: {
-    // Removed incorrect Content-Type header
+    host: true,
+    port: 5173
+  },
+  preview: {
+    port: 5173
   }
 })

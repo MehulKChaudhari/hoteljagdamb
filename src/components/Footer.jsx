@@ -93,14 +93,16 @@ const Footer = () => {
               </Box>
               <Button
                 size="md"
-                colorScheme="whiteAlpha"
-                variant="outline"
+                colorScheme="orange"
+                variant="solid"
                 onClick={handleGetDirections}
                 alignSelf="flex-end"
+                bg="brand.primary"
+                color="white"
                 _hover={{
-                  bg: 'whiteAlpha.200',
+                  bg: 'brand.secondary',
                   transform: 'translateY(-2px)',
-                  boxShadow: '0 4px 20px rgba(255, 255, 255, 0.1)',
+                  boxShadow: '0 4px 20px rgba(255, 165, 0, 0.3)',
                 }}
               >
                 <HStack spacing={2}>
