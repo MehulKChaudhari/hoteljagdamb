@@ -1,15 +1,13 @@
 import { Box, Container, Heading, Text, VStack, HStack, Icon, Button, useColorModeValue, Grid, GridItem } from '@chakra-ui/react'
-import { FaMapMarkerAlt, FaPhone, FaBuilding, FaWhatsapp } from 'react-icons/fa'
+import { FaMapMarkerAlt, FaPhone, FaBuilding } from 'react-icons/fa'
 
 const Footer = () => {
-  const handleGetDirections = () => {
-    const url = 'https://www.google.com/maps/dir/?api=1&destination=18.459063,73.823619'
-    window.open(url, '_blank')
+  const handlePhoneCall = () => {
+    window.open('tel:+919356646005', '_self')
   }
 
-  const handleWhatsApp = () => {
-    const phoneNumber = '919356646005'
-    const url = `https://wa.me/${phoneNumber}`
+  const handleGetDirections = () => {
+    const url = 'https://www.google.com/maps/dir/?api=1&destination=18.459063,73.823619'
     window.open(url, '_blank')
   }
 
@@ -55,15 +53,20 @@ const Footer = () => {
                   <Icon as={FaBuilding} color="orange.400" />
                   <Text color="gray.300">1st floor, Hotel Jagdamb, Navle Bridge, Pune, 411041</Text>
                 </HStack>
-                <HStack 
-                  cursor="pointer" 
-                  onClick={handleWhatsApp}
+                <Button
+                  variant="unstyled"
+                  onClick={handlePhoneCall}
                   _hover={{ color: 'orange.400' }}
-                  transition="all 0.3s ease"
+                  transition="color 0.2s"
+                  display="flex"
+                  alignItems="center"
+                  gap={3}
+                  p={0}
+                  h="auto"
                 >
-                  <Icon as={FaWhatsapp} color="orange.400" />
+                  <Icon as={FaPhone} color="orange.400" transform="rotate(180deg)" />
                   <Text color="gray.300">+91 9356646005</Text>
-                </HStack>
+                </Button>
               </VStack>
             </VStack>
           </GridItem>
