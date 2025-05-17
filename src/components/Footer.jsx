@@ -7,7 +7,7 @@ const Footer = () => {
   }
 
   const handleGetDirections = () => {
-    const url = 'https://www.google.com/maps/dir/?api=1&destination=18.459063,73.823619'
+    const url = 'https://maps.app.goo.gl/7ebpr5rqo7PjjqVT6'
     window.open(url, '_blank')
   }
 
@@ -51,7 +51,7 @@ const Footer = () => {
               <VStack align="start" spacing={4}>
                 <HStack>
                   <Icon as={FaBuilding} color="orange.400" />
-                  <Text color="gray.300">1st floor, Hotel Jagdamb, Navle Bridge, Pune, 411041</Text>
+                  <Text color="gray.300">Navale Brg, beside Navale Lawns, Phase 2, Wadgaon Budruk, Narhe, Pune, Maharashtra 411041</Text>
                 </HStack>
                 <Button
                   variant="unstyled"
@@ -82,7 +82,7 @@ const Footer = () => {
                 boxShadow="0 4px 20px rgba(0,0,0,0.3)"
               >
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2405.9872843646704!2d73.82302426956635!3d18.45902699891391!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTjCsDI3JzMyLjUiTiA3M8KwNDknMjUuMiJF!5e0!3m2!1sen!2sin!4v1647881234567!5m2!1sen!2sin"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3784.542868929807!2d73.8236761!3d18.459053400000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc295a5f5668975%3A0xf72aaabc74267b3b!2sHotel%20Jagdamb%2C%20Non%20Veg%20Restaurant!5e0!3m2!1sen!2sin!4v1747524812104!5m2!1sen!2sin"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
@@ -129,4 +129,4 @@ const Footer = () => {
   )
 }
 
-export default Footer 
+export default Footer
